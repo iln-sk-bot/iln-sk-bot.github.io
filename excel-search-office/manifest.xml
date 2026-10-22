@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+セットアップ手順
+1. コンピューター\HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\WEF\Developerをレジストリキーとして作成
+2. 当該レジストリキーに文字列値として、名前=<Id>の値、値=マニフェストファイルへのパス を作成 
+ -->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+  <Id>8a445c5f-e20b-4c99-9878-b15a5cf88c81</Id>
+  <Version>0.2.0.0</Version>
+  <ProviderName>Personal Tools</ProviderName>
+  <DefaultLocale>ja-JP</DefaultLocale>
+  <DisplayName DefaultValue="Excel Search Taskpane"/>
+  <Description DefaultValue="Search the current workbook using Jexl and Read Units in a detachable Excel task pane."/>
+  <IconUrl DefaultValue="https://iln-sk-bot.github.io/excel-search-office/docs/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://iln-sk-bot.github.io/excel-search-office/docs/icon-80.png"/>
+  <SupportUrl DefaultValue="https://iln-sk-bot.github.io/excel-search-office/docs/taskpane.html"/>
+  <AppDomains>
+    <AppDomain>https://iln-sk-bot.github.io</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="SharedRuntime" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://iln-sk-bot.github.io/excel-search-office/docs/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <Runtimes>
+          <Runtime resid="Taskpane.Url" lifetime="long"/>
+        </Runtimes>
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="Taskpane.Url"/>
+          </GetStarted>
+          <FunctionFile resid="Taskpane.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="ExcelSearchTaskpane.Group">
+                <Label resid="ExcelSearchTaskpane.GroupLabel"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16"/>
+                  <bt:Image size="32" resid="Icon.32"/>
+                  <bt:Image size="80" resid="Icon.80"/>
+                </Icon>
+                <Control xsi:type="Button" id="ExcelSearchTaskpane.Open">
+                  <Label resid="ExcelSearchTaskpane.OpenLabel"/>
+                  <Supertip>
+                    <Title resid="ExcelSearchTaskpane.OpenLabel"/>
+                    <Description resid="ExcelSearchTaskpane.OpenTip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16"/>
+                    <bt:Image size="32" resid="Icon.32"/>
+                    <bt:Image size="80" resid="Icon.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://iln-sk-bot.github.io/excel-search-office/docs/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://iln-sk-bot.github.io/excel-search-office/docs/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://iln-sk-bot.github.io/excel-search-office/docs/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://iln-sk-bot.github.io/excel-search-office/docs/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Excel Search"/>
+        <bt:String id="ExcelSearchTaskpane.GroupLabel" DefaultValue="検索ビュー"/>
+        <bt:String id="ExcelSearchTaskpane.OpenLabel" DefaultValue="Excel検索ビュー"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="ホームタブのExcel検索ビューを選択してください。"/>
+        <bt:String id="ExcelSearchTaskpane.OpenTip" DefaultValue="現在のExcelブックをタスクペイン内で検索します。タスクペインはドッキング解除できます。"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
