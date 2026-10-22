@@ -1,0 +1,16 @@
+Excel Search for Office / Taskpane v0.2.0
+2026-10-22
+
+Source basis: Project View Excel Search v0.5.0, full release source package.
+
+[PASS] Node adapter unit tests (geometry, typed values, tables, partial reads, navigation and limits)
+[PASS] Browser mock UI smoke (workbook read, incremental search, @jbrowse/jexl 6.0 condition,
+       cell click -> Office.js select, table metadata, new manual range UI, manual refresh)
+[PASS] Narrow task pane browser viewport (355x800): 355px body width
+[PASS] Manifest XML well-formed and ShowTaskpane, SharedRuntime long structural check
+[PASS] Jexl/date-and-time/SheetJS assets included with existing third-party notices
+
+[NOT TESTED] Real Microsoft Excel on Windows 11, actual HTTPS hosting and sideloading
+[NOT TESTED] Long-term (6+ minute) runtime in Excel task pane
+[NOT TESTED] Excel 1904 date system, full v0.5 calculated-columns/display-rule parity
+[NOT TESTED] Corporate Office trust and add-in policy variations
